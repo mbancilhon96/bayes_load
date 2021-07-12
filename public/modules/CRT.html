@@ -1,0 +1,122 @@
+<div id="directions">
+
+
+<h1>Cognitive Reflection Test</h1>
+
+<p id="question"></p>
+
+<input id="ans">
+<br>
+<br>
+
+
+<button id="start" type="button">Next</button>
+</p>
+</div>
+
+<div class="container progress-container">
+  <div class="progress-holder">
+    <div class="progress" id="progress"></div>
+  </div>
+</div>
+
+
+<style>
+        #images {
+                
+        }
+</style>
+
+<script>
+var scoreIntuitive=0
+var scoreCorrect=0
+var questionNum=0
+var data={}
+
+var questions=[
+"If three elves can wrap three toys in hour, how many elves are needed to wrap six toys in 2 hours?",
+"In an athletics team, tall members are three times more likely to win a medal than short members. This year the team has won 60 medals so far. How many of these have been won by short athletes?",
+"If John can drink one barrel of water in 6 days, and Mary can drink one barrel of water in 12 days, how long would it take them to drink one barrel of water together?",
+"Jerry received both the 15th highest and the 15th lowest mark in the class. How many students are in the class?",
+"A man buys a pig for $60, sells it for $70, buys it back for $80, and sells it finally for $90. How much has he made?",
+"Simon decided to invest $8,000 in the stock market one day early in 2008. Six months after he invested, on July 17, the stocks he had purchased were down 50 % .Fortunately for Simon, from July 17 to October 17, the stocks he had purchased went up 75%. At this point, Simon has: <br><br> <strong>a.</strong> Broken even in the stock market <br> <strong>b.</strong> Is ahead of where he began <br> <strong>c.</strong> Has lost money"
+]
+
+var answers_intuitive=[
+"6",
+"20",
+"9",
+"30",
+"10",
+"b"
+]
+var answers_correct=[
+"3",
+"15",
+"4",
+"29",
+"20",
+"c"
+]
+var user_answers=[]
+var CRT_bonus
+
+document.getElementById("question").innerHTML= questions[questionNum]
+
+document.getElementById("progress").setAttribute("style","width: 0%")
+var increment=100/(questions.length-1)
+
+d3.select('#start').on('click', function(){
+	questionNum++
+    document.getElementById("question").innerHTML= questions[questionNum]
+    user_answers.push(document.getElementById("ans").value)
+    data['CRT_q',questionNum]=document.getElementById("ans").value
+    document.getElementById("ans").value=""
+    //increment progress bar
+    var width= String(document.getElementById("progress").style.width)
+    console.log("width is ",width)
+    var newWidth=String((parseInt(width)+increment))+"%"
+    console.log("newWidth is ",newWidth)
+    document.getElementById("progress").setAttribute("style",`width:${newWidth}`)        
+
+    if (questionNum==questions.length){
+        getScore()
+        console.log("scoreIntuitive is ",scoreIntuitive)
+        data['scoreIntuitive']=scoreIntuitive
+        data['scoreCorrect']=scoreCorrect
+        console.log("data is ",data)
+        experimentr.addData(data)
+        experimentr.next()
+    }
+
+}) 
+
+//compare answers to intuitive and correct
+
+function getScore(){
+    console.log("user answers is ",user_answers)
+    for (i in user_answers){
+        console.log("answer intuitive is ", answers_intuitive[i])
+        console.log("answer correct is ", answers_correct[i])
+        if (user_answers[i]==answers_intuitive[i]){
+            scoreIntuitive++
+        }
+        else if (user_answers[i]==answers_correct[i]){
+            scoreCorrect++
+        }
+    }
+    console.log("load condition is ",experimentr.getData().loadCondition)
+    if (experimentr.getData().loadCondition=="no_load"){
+        CRT_bonus=0.33333*scoreCorrect
+    }
+    else{
+        CRT_bonus=0.25*scoreCorrect
+    }
+    console.log("CRT BONUS IS ",CRT_bonus)
+    experimentr.addBonuses(CRT_bonus,experimentr.get_currentId())
+    experimentr.addBonus(CRT_bonus)
+    console.log("DATA IS ",experimentr.getData())
+
+}
+
+</script>

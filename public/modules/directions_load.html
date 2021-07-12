@@ -1,0 +1,58 @@
+<div id="directions">
+
+<h1>Instructions</h1>
+
+Please set your browser to full screen and stay on the page until the end of the study. <br><br>
+
+<!-- <img src="modules/secondary_demo.jpg" width="100%">
+ -->
+
+<h2>Dot Pattern Memory Test</h2>
+
+<p>
+You will be shown a sample dot pattern that you will have to remember while completing the reasoning task. The pattern will only be displayed on the screen for a very short amount of time so please pay attention. After the reasoning task, you will be asked to reproduce the dot pattern by selecting the appropriate cells on the grid. You can select and unselect a cell by clicking on it. Correctly reproducing the dot pattern will award you $0.5.
+</p>
+
+
+<h2>Reasoning Study</h2>
+
+This part of the study consists of a Bayesian problem followed by two questions about the problem<br><br>
+
+<p>
+In this part of the study, you will be shown a prompt and some data. Once you have read the prompt and looked at the data, click on "I'm ready to see the question" to begin the response section. You will be asked to answer two questions about the data<br><br>
+
+Once you are confident with your answers to the two questions, hit "Submit". A correct answer is worth $0.5 each
+</p>
+
+
+<h2>Cognitive Reflection Test</h2>
+This test consists of a series of 6 questions to test your capacity to solve problems and find a correct answer. Each correct answer is worth $0.25. If you answer all the questions correctly, your bonus amount to $1.5
+
+<h2>Total Bonus</h2>
+Your base pay is $1. Your total bonus can range from $0 to $3 depending on your performance.
+
+<p style="clear:both;">
+After you have read the above instructions, click Start to begin the experiment. 
+<button id="start" type="button">Start</button>
+</p>
+</div>
+
+<style>
+        #images {
+                
+        }
+</style>
+
+<script>
+(function() {
+
+        init(); 
+
+        function init() {
+                experimentr.hideNext(); 
+
+                d3.select('#start').on('click', experimentr.next); 
+
+        }
+}())
+</script>
