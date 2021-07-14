@@ -31,7 +31,13 @@ Education:
 </select>
 </p>
 
-
+<p>
+Are you color blind?
+<select id="color_blind" name="color_blind">
+  <option value="yes_colorblind">Yes</option> 
+  <option value="no_colorblind">No</option> 
+</select>
+</p>
 </div>
 
 <style>
@@ -60,6 +66,8 @@ Education:
   document.getElementById("gender").selectedIndex = -1;
   document.getElementById("age").selectedIndex = -1;
   document.getElementById("education").selectedIndex = -1;
+  document.getElementById("color_blind").selectedIndex = -1;
+
   // document.getElementById("trained").selectedIndex = -1;
 
   d3.selectAll('select')
@@ -71,10 +79,14 @@ Education:
   d3.selectAll('select')
     .filter(function(d) { return this.name === 'education' ? this : null; })
     .on('change', function() { data.education = this.options[this.selectedIndex].text; validate();});
+  d3.selectAll('select')
+    .filter(function(d) { return this.name === 'color_blind' ? this : null; })
+    .on('change', function() { data.color_blind = this.options[this.selectedIndex].text; validate();});
+
 
 
   function validate() {
-    if(data.age && data.gender && data.education) {
+    if(data.age && data.gender && data.education && data.color_blind) {
       experimentr.endTimer('demographics');
       experimentr.addData(data);
       console.log("demographics data is ",data)
