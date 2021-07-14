@@ -49,8 +49,8 @@
 	  		experimentr.endTimer('spatial-second');
 	  		grade();
       	experimentr.addData(data);
-       	experimentr.addBonus(data.spatialSecond_numCorrect*0.1)
-      	experimentr.addBonuses(data.spatialSecond_numCorrect*0.1,12)
+       	experimentr.addBonus(data.spatialSecond_numCorrect*0.25)
+      	experimentr.addBonuses(data.spatialSecond_numCorrect*0.25,experimentr.get_currentId())
       	// experimentr.addPayment(data.spatialSecond_numCorrect);
 	  		experimentr.next();
 	  	}
@@ -62,8 +62,8 @@
       	experimentr.endTimer('spatial-second');
       	grade();
         experimentr.addData(data);
-       	experimentr.addBonus(data.spatialSecond_numCorrect*0.1)
-      	experimentr.addBonuses(data.spatialSecond_numCorrect*0.1,12)
+       	experimentr.addBonus(data.spatialSecond_numCorrect*0.25)
+      	experimentr.addBonuses(data.spatialSecond_numCorrect*0.25,experimentr.get_currentId())
       	console.log("spatial2 data is ",experimentr.getData())
         // experimentr.addPayment(data.spatialSecond_numCorrect);
         experimentr.next();

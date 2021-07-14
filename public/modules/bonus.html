@@ -31,13 +31,41 @@
       
   var tr = table.append('tr');
   tr.append('th').html();
-  tr.append('th').html('Winnings');
 
   experimentr.getBonuses().forEach(function(d, i){
-    
+    console.log("index is ",i)
     tr = table.append('div');
-    tr.html('Sheet ' + (i+1) + ' &nbsp&nbsp&nbsp&nbsp     <b>$' + d+ '</b>');
-
+    if (experimentr.getData().loadCondition=="load"){
+          if (i==3){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>' + 'Reasoning Study ');
+          }
+          else if (i==4){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>'  + 'Dot Pattern Memory Task ');
+          }
+          else if (i==5){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>' +'Cognitive Reflection Test');
+          }
+          else if (i==7){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>' +'Spatial Ability Test - Part I');
+          }
+          else if (i==9){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>' +'Spatial Ability Test - Part II');
+          }
+    }
+    if (experimentr.getData().loadCondition=="no_load"){
+          if (i==2){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>' + 'Reasoning Study ');
+          }
+          else if (i==3){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>' +'Cognitive Reflection Test');
+          }
+          else if (i==5){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>' +'Spatial Ability Test - Part I');
+          }
+          else if (i==7){
+              tr.html('$'+d+ '&nbsp&nbsp&nbsp&nbsp    <b>' +'Spatial Ability Test - Part II');
+          }
+    }
     // tr.html('Sheet ' + (i+1) + ' &nbsp&nbsp&nbsp&nbsp     <b>$' + (d/100).toFixed(2) + '</b>');
   });
 

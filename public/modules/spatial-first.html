@@ -43,8 +43,8 @@
       if(experimentr.get_current() == 'modules/spatial-first.html'){
         experimentr.endTimer('spatial-first');
         grade();
-        experimentr.addBonus(data.spatialFirst_numCorrect*0.1)
-        experimentr.addBonuses(data.spatialFirst_numCorrect*0.1,11)
+        experimentr.addBonus(data.spatialFirst_numCorrect*0.25)
+        experimentr.addBonuses(data.spatialFirst_numCorrect*0.25,experimentr.get_currentId())
         experimentr.addData(data);
         // experimentr.addPayment(data.spatialFirst_numCorrect);
         experimentr.next();
@@ -58,8 +58,8 @@
         experimentr.endTimer('spatial-first');
         grade();
         experimentr.addData(data);
-        experimentr.addBonus(data.spatialFirst_numCorrect*0.1)
-        experimentr.addBonuses(data.spatialFirst_numCorrect*0.1,11)
+        experimentr.addBonus(data.spatialFirst_numCorrect*0.25)
+        experimentr.addBonuses(data.spatialFirst_numCorrect*0.25,experimentr.get_currentId())
         console.log("spatial data is ",experimentr.getData())
         // experimentr.addPayment(data.spatialFirst_numCorrect);
         experimentr.next();
@@ -140,7 +140,6 @@
       }
     });
   }
-  
   
   function grade(){
     var count = 0;

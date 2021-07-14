@@ -14,12 +14,17 @@
 </p>
 </div>
 
-<div class="container progress-container">
+<div id="questionNum_displayContainer">
+<h2  id="questionNum_display" style="text-align:center; color:darkgrey">
+1 out of 6
+</h2>
+</div>
+<!-- <div class="container progress-container">
   <div class="progress-holder">
     <div class="progress" id="progress"></div>
   </div>
 </div>
-
+ -->
 
 <style>
         #images {
@@ -63,21 +68,22 @@ var CRT_bonus
 
 document.getElementById("question").innerHTML= questions[questionNum]
 
-document.getElementById("progress").setAttribute("style","width: 0%")
-var increment=100/(questions.length-1)
+// document.getElementById("progress").setAttribute("style","width: 0%")
+// var increment=100/(questions.length-1)
 
 d3.select('#start').on('click', function(){
 	questionNum++
+    document.getElementById("questionNum_display").innerHTML= questionNum+1 +" out of 6"
     document.getElementById("question").innerHTML= questions[questionNum]
     user_answers.push(document.getElementById("ans").value)
     data['CRT_q',questionNum]=document.getElementById("ans").value
     document.getElementById("ans").value=""
     //increment progress bar
-    var width= String(document.getElementById("progress").style.width)
-    console.log("width is ",width)
-    var newWidth=String((parseInt(width)+increment))+"%"
-    console.log("newWidth is ",newWidth)
-    document.getElementById("progress").setAttribute("style",`width:${newWidth}`)        
+    // var width= String(document.getElementById("progress").style.width)
+    // console.log("width is ",width)
+    // var newWidth=String((parseInt(width)+increment))+"%"
+    // console.log("newWidth is ",newWidth)
+    // document.getElementById("progress").setAttribute("style",`width:${newWidth}`)        
 
     if (questionNum==questions.length){
         getScore()
@@ -106,12 +112,9 @@ function getScore(){
         }
     }
     console.log("load condition is ",experimentr.getData().loadCondition)
-    if (experimentr.getData().loadCondition=="no_load"){
-        CRT_bonus=0.33333*scoreCorrect
-    }
-    else{
-        CRT_bonus=0.25*scoreCorrect
-    }
+
+    CRT_bonus=0.5*scoreCorrect
+
     console.log("CRT BONUS IS ",CRT_bonus)
     experimentr.addBonuses(CRT_bonus,experimentr.get_currentId())
     experimentr.addBonus(CRT_bonus)
