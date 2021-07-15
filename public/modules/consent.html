@@ -92,16 +92,16 @@ to take this HIT again at this time. Please contact us if you feel this is in er
  	d3.select("#disqualified_iframe").style("display","none")
  	d3.select("#consent").style("display","block")
 
-	window.addEventListener("mouseover", (event) => { //If the window is too small, make an alert and only let the user continue if they increase the window size
-			// console.log(event)
-			if (screen.height < 1024 || screen.width < 768){ //change to screen size
-				console.log("screen too small")
-				d3.select("#consent").style("display","none")
-				d3.select("#disqualified_iframe").style("display","block").attr('src', `modules/disqualified.html`)
+	// window.addEventListener("mouseover", (event) => { //If the window is too small, make an alert and only let the user continue if they increase the window size
+	// 		// console.log(event)
+	// 		if (screen.height < 1024 || screen.width < 768){ //change to screen size
+	// 			console.log("screen too small")
+	// 			d3.select("#consent").style("display","none")
+	// 			d3.select("#disqualified_iframe").style("display","block").attr('src', `modules/disqualified.html`)
 
-			}
-			return;
-	}, false);
+	// 		}
+	// 		return;
+	// }, false);
 
 	experimentr.hideNext();
 
