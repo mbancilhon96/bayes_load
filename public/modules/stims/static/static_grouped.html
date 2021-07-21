@@ -25,7 +25,11 @@
         <div class="container" id="simple-example">
         </div>
 
-        <div id="see_questions"><input type="submit" value="I'm ready to see the question." onClick=showQ()></div>
+        <div id="see_questions"><button type="submit" class="regularButton" onClick=showQ() style="float:left">I'm ready to see the question.</button></div>
+        <br>
+        <br>
+        <br>
+        <br>
         <div id="answers"></div>
     </div>
     <!-- <div id="nextBtn"><input type="submit" value="Next"></div>
@@ -42,6 +46,7 @@
 //=======primary task global variables========
 
 var ans1={ //answers to the first question
+
    "pregnancy":20,
     "disease": 20,
     "posture":20,
@@ -739,7 +744,7 @@ function validate() {
  }
 function showQ() {
         document.getElementById('answers').innerHTML = '<p>(a)'+ q1[scenario]+'<input type="number" id="ans1"><br>(b)' + q2[scenario] + '<input type="number" id="ans2">.</p>';
-        document.getElementById('submit_button').innerHTML = '<input type="submit" value="Submit" onClick=validate()>';
+        document.getElementById('submit_button').innerHTML = '<button type="submit" class="regularButton" style="float:left" onClick=validate()>Submit</button>';
         document.getElementById("submit_button").style.display="block"
         document.getElementById("second_task").style.display="block"
         experimentr.startTimer('exp_'+scenario);
